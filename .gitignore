@@ -1,0 +1,37 @@
+# Ignore the .vscode folder
+.vscode/
+
+# Ignore composer dependencies
+/vendor/
+
+# Ignore environment variables
+.env
+
+# Ignore log files
+*.log
+
+# Ignore cache directories
+/cache/
+/tmp/
+
+# Ignore compiled PHP files
+*.php~
+*.phar
+
+# Ignore PHPUnit test results
+.phpunit.result.cache
+
+# Ignore IDE specific files
+.idea/
+nbproject/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+## Contenuti
+assets
+content
+configure.php
