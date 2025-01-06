@@ -18,6 +18,8 @@ if (!is_dir($assetsDir)) {
     mkdir($assetsDir, 0777, true);
 }
 
+$galleryList = '';
+
 // Connessione al database
 try {
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_pass);
@@ -84,7 +86,8 @@ function getGalleryImages($pdo, $nid)
 }
 
 // Funzione per la conversione da HTML a Markdown (usando Parsedown)
-function convertHtmlToMarkdown($html) {
+function convertHtmlToMarkdown($html)
+{
     $converter = new HtmlConverter();
     if (!$html) {
         return null;
@@ -134,13 +137,16 @@ foreach ($results as $row) {
 
     // Ottieni il percorso dell'immagine di copertina
     $copertina = getCopertina($pdo, $nid);
-    // Ottieni le immagini della gallery
-    $galleryImages = getGalleryImages($pdo, $nid);
-    // Genera la lista di immagini della gallery in YAML
-    $galleryList = "";
-    if ($galleryImages) {
-        foreach ($galleryImages as $image) {
-            $galleryList .= "- $image\n";
+
+    if ($getGalleria) {
+        // Ottieni le immagini della gallery
+        $galleryImages = getGalleryImages($pdo, $nid);
+        // Genera la lista di immagini della gallery in YAML
+        $galleryList = "";
+        if ($galleryImages) {
+            foreach ($galleryImages as $image) {
+                $galleryList .= "- $image\n";
+            }
         }
     }
 
